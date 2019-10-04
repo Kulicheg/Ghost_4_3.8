@@ -154,19 +154,20 @@
  */
 
 #if ENABLED(ULTRA_LCD)
-  #define LCD_SDSS           28
+  #define LCD_SDSS         28
   #if ENABLED(ADC_KEYPAD)
-    #define SERVO0_PIN       27   // free for BLTouch/3D-Touch
-    #define LCD_PINS_RS      28
-    #define LCD_PINS_ENABLE  29
-    #define LCD_PINS_D4      10
-    #define LCD_PINS_D5      11
-    #define LCD_PINS_D6      16
-    #define LCD_PINS_D7      17
-    #define BTN_EN1          -1
-    #define BTN_EN2          -1
-    #define BTN_ENC          -1
-    #define ADC_KEYPAD_PIN    1
+    #define SERVO0_PIN     27   // free for BLTouch/3D-Touch
+    #ifndef LCD_I2C_TYPE_PCF8575
+      #define LCD_PINS_RS  28
+      #define LCD_PINS_ENABLE 29
+      #define LCD_PINS_D4  10
+      #define LCD_PINS_D5  11
+      #define LCD_PINS_D6  16
+      #define LCD_PINS_D7  17
+    #endif
+    #ifndef ADC_KEYPAD_PIN
+      #define ADC_KEYPAD_PIN 1   // Analog Input
+    #endif
   #elif ENABLED(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER) || ENABLED(ANET_FULL_GRAPHICS_LCD)
     // Pin definitions for the Anet A6 Full Graphics display and the RepRapDiscount Full Graphics
     // display using an adapter board  // https://go.aisler.net/benlye/anet-lcd-adapter/pcb
