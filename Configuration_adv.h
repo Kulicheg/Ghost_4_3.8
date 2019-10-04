@@ -75,8 +75,8 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 1000     // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 6  // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 60     // Seconds
+  #define THERMAL_PROTECTION_HYSTERESIS 4  // Degrees Celsius
 
   /**
    * Whenever an M104, M109, or M303 increases the target temperature, the
@@ -90,7 +90,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD   500               // Seconds
+  #define WATCH_TEMP_PERIOD   60               // Seconds
   #define WATCH_TEMP_INCREASE 2           // Degrees Celsius
 #endif
 
@@ -98,13 +98,13 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-#define THERMAL_PROTECTION_BED_PERIOD 500    // Seconds
-#define THERMAL_PROTECTION_BED_HYSTERESIS 6 // Degrees Celsius
+#define THERMAL_PROTECTION_BED_PERIOD 60    // Seconds
+#define THERMAL_PROTECTION_BED_HYSTERESIS 4 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-#define WATCH_BED_TEMP_PERIOD 500              // Seconds
+#define WATCH_BED_TEMP_PERIOD 120              // Seconds
 #define WATCH_BED_TEMP_INCREASE 2           // Degrees Celsius
 #endif
 
@@ -898,7 +898,7 @@
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-//#define RX_BUFFER_SIZE 1024
+#define RX_BUFFER_SIZE 1024
 
 #if RX_BUFFER_SIZE >= 1024
   // Enable to have the controller send XON/XOFF control characters to
