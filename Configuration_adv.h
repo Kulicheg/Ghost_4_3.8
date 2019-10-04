@@ -75,8 +75,8 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 120       // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 4    // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 1000     // Seconds
+  #define THERMAL_PROTECTION_HYSTERESIS 6  // Degrees Celsius
 
   /**
    * Whenever an M104, M109, or M303 increases the target temperature, the
@@ -90,22 +90,22 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD 120                // Seconds
-  #define WATCH_TEMP_INCREASE 1               // Degrees Celsius
+  #define WATCH_TEMP_PERIOD   500               // Seconds
+  #define WATCH_TEMP_INCREASE 2           // Degrees Celsius
 #endif
 
 /**
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-#define THERMAL_PROTECTION_BED_PERIOD 120    // Seconds
-#define THERMAL_PROTECTION_BED_HYSTERESIS 4 // Degrees Celsius
+#define THERMAL_PROTECTION_BED_PERIOD 500    // Seconds
+#define THERMAL_PROTECTION_BED_HYSTERESIS 6 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-#define WATCH_BED_TEMP_PERIOD 120                // Seconds
-#define WATCH_BED_TEMP_INCREASE 1              // Degrees Celsius
+#define WATCH_BED_TEMP_PERIOD 500              // Seconds
+#define WATCH_BED_TEMP_INCREASE 2           // Degrees Celsius
 #endif
 
 #if ENABLED(PIDTEMP)
@@ -238,12 +238,12 @@
  * the fan will turn on when any selected extruder is above the threshold.
  */
 #define E0_AUTO_FAN_PIN 7
-#define E1_AUTO_FAN_PIN 0
+#define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
-#define EXTRUDER_AUTO_FAN_TEMPERATURE 50
+#define EXTRUDER_AUTO_FAN_TEMPERATURE 45
 #define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
 
 /**
@@ -744,6 +744,8 @@
  *
  * Warning: Does not respect endstops!
  */
+//
+//
 #define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define BABYSTEP_XY              // Also enable X/Y Babystepping. Not supported on DELTA!
@@ -759,7 +761,7 @@
 // @section extruder
 
 /**
- * Linear Pressure Control v1.5
+ * Linear Pressure Control v1.5 耗材线性压力修改
  *
  * Assumption: advance [steps] = k * (delta velocity [steps/s])
  * K=0 means advance disabled.
@@ -774,9 +776,10 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-//#define LIN_ADVANCE
+//
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
-  #define LIN_ADVANCE_K 0.22  // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0  // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG          // If enabled, this will generate debug information output over USB.
 #endif
 

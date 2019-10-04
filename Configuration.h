@@ -146,7 +146,7 @@
 
 // This defines the number of extruders
 // :[1, 2, 3, 4, 5]
-#define EXTRUDERS 2
+#define EXTRUDERS 1
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -486,6 +486,8 @@
  * details can be tuned in Configuration_adv.h
  */
 
+//
+//
 #define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
 //#define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
 
@@ -521,6 +523,7 @@
 //#define USE_ZMAX_PLUG
 
 // Enable pullup for all endstops to prevent a floating state
+//
 #define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
   // Disable ENDSTOPPULLUPS to set pullups individually
@@ -722,6 +725,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
+//
 #define FIX_MOUNTED_PROBE
 
 /**
@@ -869,9 +873,9 @@
 
 // @section homing
 
-//#define NO_MOTION_BEFORE_HOMING  // Inhibit movement until all axes have been homed
+//#define NO_MOTION_BEFORE_HOMING  // Inhibit movement until all axes have been homed，回零之后所有的电机才能移动
 
-//#define UNKNOWN_Z_NO_RAISE // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
+//#define UNKNOWN_Z_NO_RAISE // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.如果位置未知 不要上升z轴
 
 //
 #define Z_HOMING_HEIGHT 5  // (in mm) Minimal z height before homing (G28) for Z clearance above the bed, clamps, ...
@@ -892,7 +896,7 @@
 
 // Travel limits (mm) after homing, corresponding to endstop positions.喷嘴位置
 #define X_MIN_POS 1
-#define Y_MIN_POS -3
+#define Y_MIN_POS 0
 /*#define X_MIN_POS 0
 #define Y_MIN_POS 0*/
 #define Z_MIN_POS 0
@@ -910,7 +914,7 @@
  * - Use 'M211' to set software endstops on/off or report current state
  */
 
-// Min software endstops constrain movement within minimum coordinate bounds
+// Min software endstops constrain movement within minimum coordinate bound防止xyz电机移动到打印面积外面
 //#define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
@@ -1152,7 +1156,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING  //回零原点
+//#define Z_SAFE_HOMING  //回零热床中间作为原点
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
