@@ -68,8 +68,10 @@
 // it         Italian
 // kana       Japanese
 // kana_utf8  Japanese (UTF8)
+// ko_kr      Korean
 // nl         Dutch
 // pl         Polish
+// pl_utf8    Polish (UTF8)
 // pt         Portuguese
 // pt-br      Portuguese (Brazilian)
 // pt-br_utf8 Portuguese (Brazilian) (UTF8)
@@ -137,7 +139,7 @@
 #define MSG_INVALID_EXTRUDER                "Invalid extruder"
 #define MSG_INVALID_SOLENOID                "Invalid solenoid"
 #define MSG_ERR_NO_THERMISTORS              "No thermistors - no temperature"    // 固件改名字修改版本//
-#define MSG_M115_REPORT                     "FIRMWARE_NAME:Marlin Ghost_V3.8 " DETAILED_BUILD_VERSION " SOURCE_CODE_URL:" SOURCE_CODE_URL " PROTOCOL_VERSION:" PROTOCOL_VERSION " MACHINE_TYPE:" MACHINE_NAME " EXTRUDER_COUNT:" STRINGIFY(EXTRUDERS) " UUID:" MACHINE_UUID
+#define MSG_M115_REPORT                     "FIRMWARE_NAME:Marlin Ghost_V3.9 " DETAILED_BUILD_VERSION " SOURCE_CODE_URL:" SOURCE_CODE_URL " PROTOCOL_VERSION:" PROTOCOL_VERSION " MACHINE_TYPE:" MACHINE_NAME " EXTRUDER_COUNT:" STRINGIFY(EXTRUDERS) " UUID:" MACHINE_UUID
 #define MSG_COUNT_X                         " Count X:"
 #define MSG_COUNT_A                         " Count A:"
 #define MSG_ERR_KILLED                      "Printer halted. kill() called!"
@@ -320,6 +322,7 @@
  && DISABLED(DISPLAY_CHARSET_ISO10646_1) \
  && DISABLED(DISPLAY_CHARSET_ISO10646_5) \
  && DISABLED(DISPLAY_CHARSET_ISO10646_KANA) \
+ && DISABLED(DISPLAY_CHARSET_ISO10646_KO_KR) \
  && DISABLED(DISPLAY_CHARSET_ISO10646_GREEK) \
  && DISABLED(DISPLAY_CHARSET_ISO10646_CN) \
  && DISABLED(DISPLAY_CHARSET_ISO10646_TR) \
