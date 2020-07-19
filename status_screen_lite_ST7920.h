@@ -440,7 +440,7 @@ void ST7920_Lite_Status_Screen::draw_static_elements() {
  * text data (the percentage).
  */
 void ST7920_Lite_Status_Screen::draw_progress_bar(const uint8_t value) {
-  #if HOTENDS > 1
+  #if HOTENDS == 1
     // If we have only one extruder, draw a long progress bar on the third line
     const uint8_t top     = 1,         // Top in pixels
                   bottom  = 13,        // Bottom in pixels

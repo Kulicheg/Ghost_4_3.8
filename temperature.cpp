@@ -247,7 +247,7 @@ uint8_t Temperature::soft_pwm_amount[HOTENDS];
    * Alternately heat and cool the nozzle, observing its behavior to
    * determine the best PID values to achieve a stable temperature.
    */
-  void Temperature::PID_autotune(const float &target, const int8_t hotend, const int8_t ncycles, const bool set_result/*=false*/) {
+  void Temperature::pid_autotune(const float &target, const int8_t hotend, const int8_t ncycles, const bool set_result/*=false*/) {
     float current = 0.0;
     int cycles = 0;
     bool heating = true;
@@ -616,13 +616,13 @@ float Temperature::get_pid_output(const int8_t e) {
 
       if (target_temperature[HOTEND_INDEX] == 0
         || pid_error[HOTEND_INDEX] < -(PID_FUNCTIONAL_RANGE)
-      #if HEATER_IDLE_HANDLER
+        #if HEATER_IDLE_HANDLER
           || heater_idle_timeout_exceeded[HOTEND_INDEX]
         #endif
       ) {
-          pid_output = 0;
-          pid_reset[HOTEND_INDEX] = true;
-        }
+        pid_output = 0;
+        pid_reset[HOTEND_INDEX] = true;
+      }
       else if (pid_error[HOTEND_INDEX] > PID_FUNCTIONAL_RANGE) {
         pid_output = BANG_MAX;
         pid_reset[HOTEND_INDEX] = true;
